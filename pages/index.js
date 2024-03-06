@@ -1,118 +1,226 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import styles from "../styles/pages/Home.module.css";
 
-const inter = Inter({ subsets: ["latin"] });
+//components
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+
+//clerk
+import { UserButton, useUser, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function Home() {
+  //user information
+  const { isLoaded, isSignedIn, user } = useUser();
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className={styles.outer}>
+      {/* background1 */}
+      <div className={styles.background1}>
+        <Navbar />
+        <div className={styles.main}>
+          <div className={styles.mainImage}></div>
+          <div>
+            <SignedIn>
+              <div style={{ fontSize: "50px", textAlign: "center", lineHeight: "1.3" }}>
+                Start the year off strong <br /> with some strong cocaine <br /> {user?.username}
+              </div>
+            </SignedIn>
+
+            <SignedOut>
+              <div style={{ fontSize: "50px", textAlign: "center", lineHeight: "1.3" }}>
+                Start the year off strong <br /> with some strong cocaine
+              </div>
+            </SignedOut>
+            <div className={styles.shopCont}>
+              <div className={styles.shop}>SHOP DRUGS</div>
+              <div className={styles.shop}>SHOP KILOS</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      {/* background2 */}
+      <div className={styles.background2}>
+        <div style={{ fontSize: "35px" }}>Find your flavor</div>
+        <div className={styles.allFlavorCont}>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/236x/75/c6/ec/75c6ec1314e73f0ab16d9f3a7ff8e345.jpg" />
+            </div>
+            <div className={styles.flavorName}>Cookie</div>
+          </div>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/236x/ec/53/da/ec53da0cfb23ed8f8f8cfbf016819320.jpg" />
+            </div>
+            <div className={styles.flavorName}>Doughnut</div>
+          </div>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/564x/7b/ca/5d/7bca5dd4bfdf8b3c3333cad45a2add39.jpg" />
+            </div>
+            <div className={styles.flavorName}>Watermelon</div>
+          </div>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/564x/4b/53/39/4b53391b0c529da28e68734b87ed954e.jpg" />
+            </div>
+            <div className={styles.flavorName}>Icecream</div>
+          </div>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/564x/1c/fd/7d/1cfd7d9ce03a08735df4ade098b7b60c.jpg" />
+            </div>
+            <div className={styles.flavorName}>Cake</div>
+          </div>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/564x/32/65/de/3265de80c13525b981724033cc5f8685.jpg" />
+            </div>
+            <div className={styles.flavorName}>Cone Icecream</div>
+          </div>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/236x/44/08/7e/44087e8d7176beea189d0718d66c16e0.jpg" />
+            </div>
+            <div className={styles.flavorName}>Soda</div>
+          </div>
+          <div className={styles.singleFlavorCont}>
+            <div className={styles.flavorImg}>
+              <img src="https://i.pinimg.com/236x/66/22/5e/66225e1a29057f11a74512b02fa13d8c.jpg" />
+            </div>
+            <div className={styles.flavorName}>Cupcake</div>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      {/* background3 */}
+      <div className={styles.background3}>
+        <div className={styles.leftCont3}>
+          <div className={styles.header3}>Nice, Crispy Crack 😩</div>
+          <div className={styles.body3}>
+            Put more powder in your nose with our brand-new invention: <br />
+            Magic Spoon drugs! feels just like the ooey-gooey-chewy <br />
+            powder you loved as a kid-but now made with grown up <br />
+            ingredients. Take a Treat for wharever life takes you. Available in <br />
+            all sorts of flavors
+          </div>
+          <div>
+            <img className={styles.body3Img} src="https://i.pinimg.com/564x/df/82/a9/df82a9b0cfb5f9f09cdfb98e3819b417.jpg" />
+          </div>
+        </div>
+        <div>
+          <img className={styles.img3} src="https://i.pinimg.com/564x/ce/d5/60/ced560272f13d1d7b480f4daaf3ad499.jpg" />
+        </div>
       </div>
-    </main>
+
+      {/* background4 */}
+      <div className={styles.background4}>
+        <div className={styles.background4Box}>
+          "There's a new magician in <br />
+          the kitchen."
+          <hr className={styles.line} />
+        </div>
+
+        <div className={styles.background4Box}>
+          "With drugs that feel <br />
+          this good and offers so <br />
+          much ... Magin Spoon may <br />
+          be the future of everything."
+          <hr className={styles.line} />
+        </div>
+        <div className={styles.background4Box}>
+          "Magic Spoon has become <br />
+          my go-to for one <br />
+          simple reason: it <br />
+          gives the best high."
+          <hr className={styles.line} />
+        </div>
+      </div>
+
+      {/* background5 */}
+      <div className={styles.background5}>
+        <img className={styles.body5img1} src="https://i.pinimg.com/564x/58/63/e1/5863e1721154172cfbb40cda3f644e6f.jpg" />
+        <div className={styles.body5cont}>
+          <div style={{ fontSize: "70px", width: "500px", lineHeight: "1.2" }}>A whole world of drugs.</div>
+          <div className={styles.body5btn}>Try Now</div>
+        </div>
+        <img className={styles.body5img1} src="https://i.pinimg.com/564x/6a/9b/62/6a9b62cf4893010fd150fc2391bfc0b9.jpg" />
+      </div>
+
+      {/* background6 */}
+      <div className={styles.background6}>
+        {/* top part of body */}
+
+        <div className={styles.body6top}>
+          {/* card1 */}
+          <div className={styles.body6card}>
+            <div className={styles.cardBody}>
+              "I just snorted delicious crack for <br />
+              dinner and the last time I did that <br />
+              was my sophomore year in <br /> college!"
+            </div>
+            <div className={styles.cardbottom}>
+              <div className={styles.cardName}>KELLY LEVEQUE</div>
+              <div className={styles.cardBio}>
+                Professional hobo, Wellness Expert, and Celebrity Health
+                <br />
+                Coach
+              </div>
+            </div>
+            <div className={styles.cardPfp}>
+              <img src="https://i.pinimg.com/564x/9b/b0/66/9bb066864b0d225c324551ee2c83125d.jpg" />
+            </div>
+          </div>
+          {/* card2 */}
+          <div className={styles.body6card}>
+            <div className={styles.cardBody}>
+              "When they said ‘Breakfast of <br />
+              drug addicts’, they meant Magic <br />
+              Spoon."
+            </div>
+            <div className={styles.cardbottom}>
+              <div className={styles.cardName}>
+                PRISCILLA FREDERICK- <br />
+                LOOMIS
+              </div>
+              <div className={styles.cardBio}>
+                Olympian, Entrepreneur, Radio Personality, drug tester & <br />
+                Public Speaker
+              </div>
+            </div>
+            <div className={styles.cardPfp}>
+              <img src="https://i.pinimg.com/236x/57/b1/64/57b164da9d70a79c3a60a11e9ba9095b.jpg" />
+            </div>
+          </div>
+          {/* card3 */}
+          <div className={styles.body6card}>
+            <div className={styles.cardBody}>
+              "Magic Spoon is my adult life and <br />
+              kid life smashed into one fantastic <br />
+              kilo of weed.
+            </div>
+            <div className={styles.cardbottom}>
+              <div className={styles.cardName}>NATALIE DURAN</div>
+              <div className={styles.cardBio}>Rock Climber, Ninja Warrior, Professional Gooner, Producer</div>
+            </div>
+            <div className={styles.cardPfp}>
+              <img src="https://i.pinimg.com/474x/75/c7/c5/75c7c5ee704b035cc74cdb2c7c9bdfba.jpg" />
+            </div>
+          </div>
+        </div>
+
+        {/* bottom part of body */}
+        <div className={styles.body6bottom}>
+          <div style={{ fontSize: "70px", width: "600px", lineHeight: "1" }}>
+            Why did we grow up,
+            <a className={styles.outline}>but our cereal didn't?</a>
+          </div>
+          <div className={styles.body6btn}>Our Story</div>
+        </div>
+      </div>
+
+      {/* footer or background7 */}
+      <Footer />
+    </div>
   );
 }
